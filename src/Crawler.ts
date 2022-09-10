@@ -17,10 +17,10 @@ export const getScore = async (url: string) => {
         console.log(JSON.stringify(score));
 
         await browser.close();
-        
+
         return score;
     } catch (error) {
-        console.log("Crawler error");
+        console.log("Crawler error", error);
     }
 
 }
