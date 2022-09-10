@@ -6,7 +6,10 @@ export const getScore = async (url: string) => {
     try {
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
-        await page.goto(url);
+        await page.goto(url, {
+            waitUntil: 'load',
+            timeout: 0
+        });
 
         // await page.screenshot({ path: 'example.png' });
 
