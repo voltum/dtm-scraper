@@ -9,7 +9,7 @@ const app: Express = express();
 
 app.use(cors({ origin: process.env.REMOTE_CLIENT_APP }));
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 8080;
 
 app.get('/', async (req: Request, res: Response) => {
   let answer: { status: string, score?: number | undefined } = {
