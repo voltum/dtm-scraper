@@ -16,7 +16,10 @@ const getScore = (url) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const browser = yield puppeteer.launch();
         const page = yield browser.newPage();
-        yield page.goto(url);
+        yield page.goto(url, {
+            waitUntil: 'load',
+            timeout: 0
+        });
         // await page.screenshot({ path: 'example.png' });
         score = (yield page.evaluate(() => {
             var _a;
@@ -27,7 +30,7 @@ const getScore = (url) => __awaiter(void 0, void 0, void 0, function* () {
         return score;
     }
     catch (error) {
-        console.log("Crawler error");
+        console.log("Crawler error", error);
     }
 });
 exports.getScore = getScore;

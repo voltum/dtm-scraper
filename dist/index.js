@@ -15,9 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const Crawler_1 = require("./Crawler");
+const cors = require("cors");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const port = process.env.PORT || 3001;
+app.use(cors({ origin: process.env.REMOTE_CLIENT_APP }));
+const port = process.env.PORT || 8080;
 app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let answer = {
         status: 'success'
